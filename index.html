@@ -1,566 +1,209 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Two Plasma Studios | Programming Studio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Av. Funda Ertürk | Hukuk & Danışmanlık Bürosu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #071424;   
+            --primary-light: #0f2541;  
+            --accent-gold: #d4af37;    
+            --text-main: #2b3a4a;      
+            --text-light: #ffffff;     
+            --bg-light: #fafbfc;       
+        }
 
-    /* CSS Değişkenleri - Dark tema (varsayılan) */
-    :root {
-      --bg-body: #0a0a1a;
-      --bg-surface: rgba(20, 20, 40, 0.6);
-      --bg-card: #13132b;
-      --bg-nav: rgba(10, 10, 26, 0.9);
-      --text-primary: #eef2ff;
-      --text-secondary: #b9c3db;
-      --border-color: rgba(168, 85, 247, 0.3);
-      --accent: #a855f7;
-      --accent-light: #c084fc;
-      --hero-bg: radial-gradient(circle at 10% 20%, #0f0f2c, #030314);
-      --card-bg: linear-gradient(145deg, #13132b, #0b0b1f);
-      --input-bg: #15152f;
-      --input-border: #3a3a6a;
-      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --glow: 0 0 12px rgba(168, 85, 247, 0.4);
-    }
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.2s ease; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--text-main); background-color: #ffffff; line-height: 1.7; scroll-behavior: smooth; }
+        h1, h2, h3, h4 { font-family: 'Cinzel', serif; letter-spacing: 1px; }
 
-    body.light {
-      --bg-body: #f4f6fc;
-      --bg-surface: rgba(240, 242, 255, 0.8);
-      --bg-card: #ffffff;
-      --bg-nav: rgba(255, 255, 255, 0.95);
-      --text-primary: #1e293b;
-      --text-secondary: #334155;
-      --border-color: #cbd5e1;
-      --accent: #6366f1;
-      --accent-light: #818cf8;
-      --hero-bg: linear-gradient(135deg, #eef2ff, #ffffff);
-      --card-bg: #ffffff;
-      --input-bg: #ffffff;
-      --input-border: #cbd5e1;
-      --glow: 0 0 12px rgba(99, 102, 241, 0.3);
-    }
+        header { background-color: rgba(7, 20, 36, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 2px solid var(--accent-gold); }
+        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 20px 25px; }
+        .logo a { color: #ffffff !important; text-decoration: none; font-size: 22px; font-weight: 700; letter-spacing: 1.5px; }
+        
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { color: #d1d5db; text-decoration: none; font-weight: 500; font-size: 13px; text-transform: uppercase; }
+        nav ul li a:hover { color: var(--text-light); }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-body);
-      color: var(--text-primary);
-      line-height: 1.5;
-      transition: background-color 0.3s, color 0.2s;
-    }
+        .hero { background: linear-gradient(rgba(7, 20, 36, 0.88), rgba(15, 37, 65, 0.85)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--text-light); padding: 0 20px; }
+        .hero-content h1 { font-size: 52px; margin-bottom: 20px; font-weight: 700; }
+        .hero-content p { font-size: 20px; color: var(--accent-gold); margin-bottom: 40px; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+        .btn-gold { background-color: var(--accent-gold); color: var(--primary-dark); border: 2px solid var(--accent-gold); padding: 15px 40px; text-decoration: none; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: inline-block; }
+        .btn-gold:hover { background-color: transparent; color: var(--text-light); }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+        section { padding: 100px 25px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 36px; margin-bottom: 60px; color: var(--primary-dark); }
+        .section-title span { color: var(--accent-gold); }
+        .section-title::after { content: ''; display: block; width: 80px; height: 3px; background-color: var(--accent-gold); margin: 20px auto 0 auto; }
 
-    /* Scroll animasyonu ve efektler */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .services-grid, .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .service-card { background-color: var(--bg-light); padding: 45px 30px; text-align: center; border-radius: 8px; border: 1px solid #eef2f6; }
+        .service-card i { font-size: 45px; color: var(--accent-gold); margin-bottom: 25px; }
 
-    /* Hover glow efektleri */
-    .service-card, .project-card, .stat-card, .faq-item, .newsletter, .join-wrapper {
-      transition: var(--transition);
-    }
-    .service-card:hover, .project-card:hover, .stat-card:hover, .faq-item:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--glow);
-      border-color: var(--accent);
-    }
+        .articles-section { background-color: var(--bg-light); }
+        .article-card { background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .article-img { height: 180px; background-color: var(--primary-light); display: flex; align-items: center; justify-content: center; color: var(--accent-gold); font-size: 45px; }
+        .article-content { padding: 25px; }
 
-    /* Buton dalgalanma efekti */
-    .btn-primary, .btn-outline {
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-primary::after, .btn-outline::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255,255,255,0.3);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.5s, height 0.5s;
-    }
-    .btn-primary:active::after, .btn-outline:active::after {
-      width: 200px;
-      height: 200px;
-      opacity: 0;
-    }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
+        .form-wrapper { background: var(--bg-light); padding: 40px; border-radius: 8px; border-top: 4px solid var(--accent-gold); }
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 14px; border: 1px solid #d1d5db; border-radius: 4px; }
+        .btn-submit-form { width: 100%; background-color: var(--primary-dark); color: #fff; border: none; padding: 16px; font-weight: 700; text-transform: uppercase; cursor: pointer; }
 
-    /* Tipografi animasyonu */
-    .hero-content h1 {
-      animation: fadeInUp 1s ease;
-    }
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #1e1e2f; }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
-    body.light ::-webkit-scrollbar-track { background: #e2e8f0; }
-
-    .btn-primary {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--accent), #6366f1);
-      color: white;
-      font-weight: 600;
-      padding: 12px 28px;
-      border-radius: 40px;
-      text-decoration: none;
-      transition: var(--transition);
-      box-shadow: 0 4px 14px rgba(168, 85, 247, 0.3);
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(168, 85, 247, 0.5); }
-    .btn-outline {
-      display: inline-block;
-      background: transparent;
-      border: 2px solid var(--accent);
-      color: var(--accent-light);
-      font-weight: 600;
-      padding: 10px 26px;
-      border-radius: 40px;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    .btn-outline:hover { background: rgba(168, 85, 247, 0.2); border-color: var(--accent-light); color: var(--text-primary); }
-
-    /* Navbar */
-    .navbar {
-      position: sticky;
-      top: 0;
-      background: var(--bg-nav);
-      backdrop-filter: blur(12px);
-      z-index: 1000;
-      border-bottom: 1px solid var(--border-color);
-      padding: 16px 0;
-    }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .logo-img {
-      height: 45px;
-      width: auto;
-      border-radius: 12px;
-      background: #1e1e3a;
-      padding: 4px;
-    }
-    .logo-text {
-      font-size: 1.8rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #e879f9, #818cf8);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-      align-items: center;
-    }
-    .nav-links a { text-decoration: none; font-weight: 500; color: var(--text-primary); transition: 0.2s; }
-    .nav-links a:hover { color: var(--accent-light); }
-    .lang-switch { display: flex; gap: 8px; margin-left: 16px; }
-    .lang-btn {
-      background: none; border: none; color: var(--text-primary); font-weight: 600;
-      cursor: pointer; padding: 4px 10px; border-radius: 30px;
-    }
-    .lang-btn.active { background: var(--accent); color: white; }
-    .theme-toggle {
-      background: none; border: none; font-size: 1.4rem; cursor: pointer;
-      margin-left: 12px; color: var(--text-primary);
-    }
-    .menu-icon { display: none; font-size: 1.8rem; cursor: pointer; }
-
-    /* Hero */
-    .hero {
-      padding: 100px 0 80px;
-      background: var(--hero-bg);
-    }
-    .hero-grid { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
-    .hero-content { flex: 1; }
-    .hero-badge {
-      background: rgba(168, 85, 247, 0.2); display: inline-block; padding: 6px 14px;
-      border-radius: 30px; font-size: 0.85rem; margin-bottom: 20px;
-      border: 1px solid var(--accent);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(168,85,247,0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(168,85,247,0); }
-      100% { box-shadow: 0 0 0 0 rgba(168,85,247,0); }
-    }
-    .hero-content h1 {
-      font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px;
-      background: linear-gradient(to right, #fff, var(--accent-light));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    body.light .hero-content h1 { background: linear-gradient(to right, #1e293b, var(--accent)); -webkit-background-clip: text; }
-    .hero-content p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 32px; max-width: 90%; }
-    .hero-buttons { display: flex; gap: 18px; flex-wrap: wrap; }
-    .hero-image { flex: 1; text-align: center; }
-    .hero-image i { font-size: 12rem; color: var(--accent); filter: drop-shadow(0 0 20px var(--accent)); animation: float 4s ease-in-out infinite; }
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
-
-    /* Sections */
-    section { padding: 80px 0; }
-    .section-title {
-      font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 16px;
-      background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .section-sub { text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 48px; }
-
-    /* Services, Projects, FAQ */
-    .services-grid, .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 32px;
-    }
-    .service-card, .project-card {
-      background: var(--bg-surface);
-      backdrop-filter: blur(4px);
-      padding: 32px 24px;
-      border-radius: 28px;
-      text-align: center;
-      border: 1px solid var(--border-color);
-      transition: var(--transition);
-    }
-    .service-icon, .project-card i { font-size: 2.8rem; color: var(--accent-light); margin-bottom: 20px; }
-    .service-card h3, .project-card h3 { font-size: 1.5rem; margin-bottom: 12px; }
-
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    .faq-item { background: var(--bg-surface); padding: 24px; border-radius: 24px; transition: var(--transition); }
-    .faq-item h4 { font-size: 1.2rem; margin-bottom: 10px; color: var(--accent-light); }
-
-    /* Stats */
-    .stats-grid {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-      margin: 40px 0;
-    }
-    .stat-card {
-      text-align: center;
-      background: var(--bg-surface);
-      padding: 24px 32px;
-      border-radius: 40px;
-      min-width: 160px;
-      transition: var(--transition);
-    }
-    .stat-number {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: var(--accent-light);
-    }
-
-    /* Newsletter & Join */
-    .newsletter {
-      background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(99,102,241,0.1));
-      border-radius: 48px;
-      padding: 48px;
-      text-align: center;
-      transition: var(--transition);
-    }
-    .newsletter-form {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 24px;
-    }
-    .newsletter-form input {
-      padding: 14px 24px;
-      border-radius: 60px;
-      border: 1px solid var(--border-color);
-      background: var(--input-bg);
-      color: var(--text-primary);
-      width: 280px;
-    }
-    .join-wrapper {
-      background: var(--bg-surface);
-      border-radius: 48px;
-      padding: 48px;
-      text-align: center;
-      transition: var(--transition);
-    }
-
-    /* Contact */
-    .contact-flex {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 48px;
-      background: var(--bg-surface);
-      padding: 48px;
-      border-radius: 48px;
-    }
-    .contact-info { flex: 1; }
-    .contact-detail { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
-    .contact-detail i { width: 44px; height: 44px; background: var(--input-bg); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--accent-light); }
-    .contact-form { flex: 1; }
-    .form-group { margin-bottom: 20px; }
-    .form-group input, .form-group textarea {
-      width: 100%; padding: 14px 18px; border: 1px solid var(--input-border);
-      border-radius: 28px; background: var(--input-bg); color: var(--text-primary);
-      font-family: inherit;
-      transition: var(--transition);
-    }
-    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(168,85,247,0.2); }
-
-    /* Modal - Düzeltilmiş Form Görünümü */
-    .modal-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
-      z-index: 2000; display: flex; align-items: center; justify-content: center;
-      visibility: hidden; opacity: 0; transition: 0.2s;
-    }
-    .modal-overlay.active { visibility: visible; opacity: 1; }
-    .modal-container {
-      background: var(--bg-body);
-      border: 1px solid var(--accent);
-      border-radius: 48px;
-      max-width: 550px;
-      width: 90%;
-      padding: 32px;
-      position: relative;
-      box-shadow: 0 25px 40px rgba(0,0,0,0.4);
-    }
-    .modal-close { position: absolute; top: 20px; right: 24px; font-size: 1.6rem; cursor: pointer; color: var(--text-secondary); }
-    .modal-container h3 { font-size: 1.8rem; margin-bottom: 8px; }
-    .modal-container label { font-weight: 600; display: block; margin-top: 16px; margin-bottom: 6px; }
-    .modal-container select, .modal-container input, .modal-container textarea {
-      width: 100%; padding: 12px 16px; border-radius: 28px; border: 1px solid var(--input-border);
-      background: var(--input-bg); color: var(--text-primary); font-size: 1rem;
-    }
-    .estimate-price { background: rgba(168,85,247,0.15); padding: 10px; border-radius: 28px; margin: 16px 0; text-align: center; font-weight: bold; }
-    .modal-container button { margin-top: 20px; width: 100%; }
-
-    /* Cookie */
-    .cookie-consent {
-      position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-nav);
-      backdrop-filter: blur(12px); border-top: 2px solid var(--accent);
-      padding: 20px 24px; z-index: 2000; display: flex; flex-wrap: wrap;
-      justify-content: space-between; align-items: center; gap: 20px;
-      transform: translateY(100%); transition: transform 0.4s ease;
-    }
-    .cookie-consent.show { transform: translateY(0); }
-    .cookie-policy-link { color: var(--accent-light); text-decoration: underline; cursor: pointer; }
-
-    footer {
-      background: var(--bg-nav);
-      padding: 48px 0 24px;
-      border-top: 1px solid var(--border-color);
-    }
-    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; margin-bottom: 40px; }
-    .social-links a { color: var(--text-secondary); font-size: 1.4rem; margin-left: 20px; transition: 0.2s; }
-    .social-links a:hover { color: var(--accent-light); }
-
-    @media (max-width: 900px) {
-      .nav-links {
-        position: fixed; top: 75px; left: -100%; width: 80%; height: calc(100vh - 75px);
-        background: var(--bg-nav); flex-direction: column; align-items: center;
-        padding: 40px 20px; transition: 0.3s; z-index: 999;
-      }
-      .nav-links.active { left: 0; }
-      .menu-icon { display: block; }
-      .hero-content h1 { font-size: 2.4rem; }
-    }
-  </style>
+        .loading-text { text-align: center; color: var(--accent-gold); width: 100%; font-weight: 600; }
+        footer { background-color: var(--primary-dark); color: #9ca3af; text-align: center; padding: 30px 20px; font-size: 14px; }
+    </style>
 </head>
 <body>
 
-<!-- Cookie Bar -->
-<div id="cookieConsent" class="cookie-consent">
-  <div class="cookie-text"><strong>🍪 Çerez Kullanımı</strong> — Bu site, dil ve tema tercihinizi hatırlamak için çerezler kullanır. <span class="cookie-policy-link" id="cookiePolicyLink">Çerez Politikası</span></div>
-  <div><button id="acceptCookies" class="btn-primary" style="padding: 8px 20px;">Kabul Et</button>
-  <button id="declineCookies" class="btn-outline" style="padding: 8px 20px;">Reddet</button></div>
-</div>
+    <header>
+        <div class="nav-container">
+            <div class="logo"><a href="#">AV. FUNDA ERTÜRK</a></div>
+            <nav>
+                <ul>
+                    <li><a href="#">Ana Sayfa</a></li>
+                    <li><a href="#hakkimizda">Kurumsal</a></li>
+                    <li><a href="#faaliyetler">Faaliyet Alanları</a></li>
+                    <li><a href="#makaleler">Makaleler</a></li>
+                    <li><a href="#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<!-- Modal: Proje Teklif Formu (Düzeltilmiş) -->
-<div id="quoteModal" class="modal-overlay">
-  <div class="modal-container">
-    <span class="modal-close" id="closeModalBtn">&times;</span>
-    <h3>📋 Hızlı Teklif Al</h3>
-    <p>Proje türü ve bütçenizi seçin, size özel fiyat tahmini gönderelim.</p>
-    <form id="quoteForm">
-      <label>Proje Türü</label>
-      <select id="projectType" required>
-        <option value="web">Web Geliştirme</option>
-        <option value="mobile">Mobil Uygulama</option>
-        <option value="game">Oyun Geliştirme</option>
-        <option value="ai">Yapay Zeka / Otomasyon</option>
-      </select>
-      <label>Bütçe Aralığı</label>
-      <select id="budget" required>
-        <option value="low">0 - 5.000 ₺</option>
-        <option value="medium">5.000 - 20.000 ₺</option>
-        <option value="high">20.000 ₺ üzeri</option>
-      </select>
-      <div class="estimate-price" id="priceEstimate">💡 Tahmini fiyat: —</div>
-      <label>E-posta Adresiniz</label>
-      <input type="email" id="quoteEmail" required placeholder="ornek@email.com">
-      <label>Proje Detayı (kısa açıklama)</label>
-      <textarea id="quoteDetails" rows="2" placeholder="Ne yapmak istiyorsunuz?"></textarea>
-      <button type="submit" class="btn-primary">Teklif İste</button>
-    </form>
-  </div>
-</div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AV. FUNDA ERTÜRK</h1>
+            <p>Güven, Adalet ve Profesyonel Hukuki Danışmanlık</p>
+            <a href="#iletisim" class="btn-gold">Randevu Alın</a>
+        </div>
+    </section>
 
-<nav class="navbar">
-  <div class="container nav-container">
-    <div class="logo-area"><img src="two plasma studıos.png" alt="Logo" class="logo-img" onerror="this.style.display='none'"><span class="logo-text">TWO PLASMA STUDIOS</span></div>
-    <div class="menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">Ana Sayfa</a></li><li><a href="#services">Hizmetler</a></li><li><a href="#projects">Projeler</a></li><li><a href="#faq">SSS</a></li><li><a href="#contact">İletişim</a></li>
-      <div class="lang-switch"><button class="lang-btn" data-lang="tr">TR</button><button class="lang-btn" data-lang="en">EN</button></div>
-      <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
-    </ul>
-  </div>
-</nav>
+    <section id="hakkimizda">
+        <div class="container">
+            <h2 class="section-title">Hakkımızda & <span>İlkelerimiz</span></h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #556375; font-size: 17px;">
+                Kurucumuz Av. Funda Ertürk liderliğindeki hukuk büromuz, müvekkillerine küresel standartlarda bir danışmanlık hizmeti sunmayı vizyon edinmiştir. Hukuki süreçlerin her adımında şeffaflığı, gizliliği ve dürüstlüğü ön planda tutmaktayız.
+            </p>
+        </div>
+    </section>
 
-<main>
-  <section id="home" class="hero fade-up"><div class="container hero-grid"><div class="hero-content"><span class="hero-badge">⚡ PLASMA POWERED ⚡</span><h1>Kodla, Dönüştür,<br>Yükselt</h1><p>Two Plasma Studios olarak hayalinizdeki projeleri makul fiyatlarla, bazen de bedavaya hayata geçiriyoruz.</p><div class="hero-buttons"><button id="openQuoteBtn" class="btn-primary">Hemen Teklif Al</button><a href="#projects" class="btn-outline">Aktif Projeler</a></div></div><div class="hero-image"><i class="fas fa-bolt"></i></div></div></section>
+    <section id="faaliyetler">
+        <div class="container">
+            <h2 class="section-title">Uzmanlık <span>Alanları</span></h2>
+            <div class="services-grid" id="services-target">
+                <p class="loading-text">Yükleniyor...</p>
+            </div>
+        </div>
+    </section>
 
-  <section id="services" class="fade-up"><div class="container"><h2 class="section-title">Uzmanlık Alanlarımız</h2><p class="section-sub">Web'den mobil'e, yapay zekadan oyun geliştirmeye kadar geniş yelpaze.</p><div class="services-grid"><div class="service-card"><div class="service-icon"><i class="fab fa-react"></i></div><h3>Web Geliştirme</h3><p>Modern, hızlı ve duyarlı web siteleri & uygulamalar.</p></div><div class="service-card"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><h3>Mobil Uygulama</h3><p>iOS & Android için cross-platform çözümler.</p></div><div class="service-card"><div class="service-icon"><i class="fas fa-brain"></i></div><h3>Yapay Zeka & Otomasyon</h3><p>Akıllı sistemler ve veri odaklı yazılımlar.</p></div><div class="service-card"><div class="service-icon"><i class="fas fa-gamepad"></i></div><h3>Oyun Geliştirme</h3><p>Unity, Unreal ile eğlenceli ve yaratıcı oyunlar.</p></div></div></div></section>
+    <section id="makaleler" class="articles-section">
+        <div class="container">
+            <h2 class="section-title">Hukuki <span>Makaleler</span></h2>
+            <div class="articles-grid" id="articles-target">
+                <p class="loading-text">Yükleniyor...</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- İstatistikler (Animasyonlu Sayaç) -->
-  <section class="fade-up"><div class="container"><div class="stats-grid"><div class="stat-card"><div class="stat-number" id="statCustomers">42</div><p>Mutlu Müşteri</p></div><div class="stat-card"><div class="stat-number" id="statProjects">14</div><p>Tamamlanan Proje</p></div><div class="stat-card"><div class="stat-number" id="statContributions">2</div><p>Açık Kaynak Katkı</p></div></div></div></section>
+    <section id="iletisim">
+        <div class="container">
+            <h2 class="section-title">Hukuki Destek <span>Talep Formu</span></h2>
+            <div class="contact-grid">
+                <div class="contact-details">
+                    <h3>Büro Bilgileri</h3>
+                    <p style="margin-bottom:15px;"><strong>Adres:</strong> İzmir / Türkiye</p>
+                    <p style="margin-bottom:15px;"><strong>Telefon:</strong> +90 (5XX) XXX XX XX</p>
+                    <p style="margin-bottom:15px;"><strong>E-Posta:</strong> av.fundaerturk@gmail.com</p>
+                </div>
+                <div class="form-wrapper">
+                    <form action="https://formsubmit.co/av.fundaerturk@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <div class="form-group"><input type="text" name="name" placeholder="Adınız Soyadınız" required></div>
+                        <div class="form-group"><input type="email" name="email" placeholder="E-Posta Adresiniz" required></div>
+                        <div class="form-group"><textarea name="message" rows="4" placeholder="Mesajınız..." required></textarea></div>
+                        <button type="submit" class="btn-submit-form">Mesajı Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="projects" class="fade-up"><div class="container"><h2 class="section-title">⚡ Aktif Projelerimiz</h2><p class="section-sub">Açık kaynak ruhuyla geliştirdiğimiz bazı çalışmalar.</p><div class="projects-grid"><div class="project-card"><i class="fas fa-globe"></i><h3>Artikelle</h3><p>Dinamik içerik platformu. Python (Django) ile geliştiriliyor.</p><a href="https://artikelle.pythonanywhere.com" target="_blank" class="project-link" style="color:var(--accent-light);">artikelle.pythonanywhere.com <i class="fas fa-external-link-alt"></i></a></div><div class="project-card"><i class="fas fa-code-branch"></i><h3>Plasma CLI</h3><p>Geliştiriciler için hızlı proje başlatma aracı.</p><a href="https://github.com/TwoPlasmaStudios" target="_blank" class="project-link" style="color:var(--accent-light);">GitHub'da İncele <i class="fab fa-github"></i></a></div><div class="project-card"><i class="fas fa-robot"></i><h3>PlasmaBot</h3><p>Discord için moderasyon ve eğlence botu.</p><a href="#" class="project-link" style="color:var(--accent-light);">Yakında</a></div></div></div></section>
+    <footer>
+        <p>&copy; 2026 Av. Funda Ertürk Hukuk & Danışmanlık Bürosu. Tüm Hakları Saklıdır.</p>
+    </footer>
 
-  <!-- GitHub Canlı İstatistikleri -->
-  <section class="fade-up"><div class="container"><div class="newsletter"><i class="fab fa-github" style="font-size: 3rem; color: var(--accent-light);"></i><h3>GitHub'da Bizi Takip Edin</h3><div id="githubStats" style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin: 24px 0;"><div>📦 Repo: <strong id="repoCount">-</strong></div><div>⭐ Yıldız: <strong id="starCount">-</strong></div><div>🔀 Fork: <strong id="forkCount">-</strong></div></div><a href="https://github.com/TwoPlasmaStudios" target="_blank" class="btn-primary">GitHub Profili</a></div></div></section>
+    <script>
+        // BURAYA KENDİ GOOGLE SHEETS ID'NİZİ YAPIŞTIRIN
+        const SHEET_ID = 'TABLO_ID_BURAYA_GELECEK';
 
-  <section id="faq" class="fade-up"><div class="container"><h2 class="section-title">Sık Sorulan Sorular</h2><div class="faq-grid"><div class="faq-item"><h4>Proje fiyatları nasıl belirleniyor?</h4><p>Proje kapsamına göre makul fiyatlar, öğrenci projelerine ücretsiz destek.</p></div><div class="faq-item"><h4>Ekibinize nasıl katılabilirim?</h4><p>İletişim formundan bize yeteneklerinizi yazın.</p></div><div class="faq-item"><h4>Teslimat süreleri?</h4><p>Basit projeler 1-2 hafta, kapsamlılar 4-8 hafta.</p></div><div class="faq-item"><h4>Garanti ve destek?</h4><p>3 ay ücretsiz teknik destek ve hata düzeltme.</p></div></div></div></section>
+        // Verileri Google Sheets'ten JSON formatında çeken fonksiyon
+        async function fetchSheetData(sheetName) {
+            const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
+            const response = await fetch(url);
+            const text = await response.text();
+            const json = JSON.parse(text.substr(47).slice(0, -2));
+            
+            const rows = json.table.rows;
+            const data = [];
+            
+            for(let i = 1; i < rows.length; i++) { // İlk satır başlık olduğu için 1'den başlıyoruz
+                if(rows[i].c[0] && rows[i].c[1]) {
+                    data.push({
+                        col1: rows[i].c[0].v,
+                        col2: rows[i].c[1].v
+                    });
+                }
+            }
+            return data;
+        }
 
-  <!-- Haber Bülteni Aboneliği -->
-  <section class="fade-up"><div class="container"><div class="newsletter"><h3>📬 Güncel Kalın</h3><p>Yeni projeler, açık kaynak sürümler ve fırsatlardan ilk sizin haberiniz olsun.</p><form id="newsletterForm" class="newsletter-form"><input type="email" id="newsletterEmail" placeholder="E-posta adresiniz" required><button type="submit" class="btn-primary">Abone Ol</button></form><div id="newsletterStatus" style="margin-top:16px;"></div></div></div></section>
+        async function initSite() {
+            try {
+                // Faaliyet Alanlarını Çek ve Yaz
+                const faaliyetler = await fetchSheetData('faaliyetler');
+                const sTarget = document.getElementById('services-target');
+                sTarget.innerHTML = '';
+                faaliyetler.forEach(f => {
+                    sTarget.innerHTML += `
+                        <div class="service-card">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            <h3>${f.col1}</h3>
+                            <p>${f.col2}</p>
+                        </div>`;
+                });
 
-  <section id="contact" class="fade-up"><div class="container"><h2 class="section-title">İletişim & İşbirliği</h2><div class="contact-flex"><div class="contact-info"><h3>Hemen Ulaşın</h3><div class="contact-detail"><i class="fas fa-envelope"></i><span>twoplasmastudiosstudio@gmail.com</span></div><div class="contact-detail"><i class="fab fa-github"></i><a href="https://github.com/TwoPlasmaStudios" target="_blank" style="color:var(--accent-light);">github.com/TwoPlasmaStudios</a></div><div class="contact-detail"><i class="fab fa-youtube"></i><a href="https://www.youtube.com/@Twoplasmastudios-c9s" target="_blank" style="color:var(--accent-light);">YouTube Kanalı</a></div><div class="contact-detail"><i class="fas fa-map-marker-alt"></i><span>🌍 Tamamen Uzaktan / Dijital Merkez</span></div></div><div class="contact-form"><form id="contactForm"><div class="form-group"><input type="text" id="name" placeholder="Adınız" required></div><div class="form-group"><input type="email" id="email" placeholder="E-posta" required></div><div class="form-group"><textarea id="message" rows="4" placeholder="Mesajınız" required></textarea></div><button type="submit" class="btn-primary" style="width:100%;">Gönder</button></form><div id="formStatus"></div></div></div></div></section>
-</main>
+                // Makaleleri Çek ve Yaz
+                const makaleler = await fetchSheetData('makaleler');
+                const aTarget = document.getElementById('articles-target');
+                aTarget.innerHTML = '';
+                makaleler.forEach(m => {
+                    aTarget.innerHTML += `
+                        <div class="article-card">
+                            <div class="article-img"><i class="fa-solid fa-book-bookmark"></i></div>
+                            <div class="article-content">
+                                <h3>${m.col1}</h3>
+                                <p>${m.col2.substring(0, 150)}...</p>
+                                <a href="#iletisim" style="color:var(--accent-gold); text-decoration:none; font-weight:600;">Bilgi Al &rightarrow;</a>
+                            </div>
+                        </div>`;
+                });
+            } catch (error) {
+                console.error("Veri yükleme hatası:", error);
+            }
+        }
 
-<footer><div class="container"><div class="footer-content"><div><h3>TWO PLASMA STUDIOS</h3><p>code · art · plasma</p></div><div class="social-links"><a href="https://github.com/TwoPlasmaStudios" target="_blank"><i class="fab fa-github"></i></a><a href="https://www.youtube.com/@Twoplasmastudios-c9s" target="_blank"><i class="fab fa-youtube"></i></a><a href="mailto:twoplasmastudiosstudio@gmail.com"><i class="fas fa-envelope"></i></a></div></div><div class="copyright">&copy; 2025 Two Plasma Studios | Yazılım herkes için, her yerde.</div></div></footer>
-
-<script>
-  // Çerez Yönetimi
-  function setCookie(name, value, days) { let expires = ""; if (days) { const d = new Date(); d.setTime(d.getTime() + days*24*60*60*1000); expires = "; expires="+d.toUTCString(); } document.cookie = name + "=" + (value || "") + expires + "; path=/"; }
-  function getCookie(name) { const v = `; ${document.cookie}`; const parts = v.split(`; ${name}=`); if(parts.length===2) return parts.pop().split(';').shift(); return null; }
-  let cookiesAccepted = getCookie('cookies_accepted') === 'true';
-  const consentBar = document.getElementById('cookieConsent'); if(!cookiesAccepted) consentBar.classList.add('show');
-  document.getElementById('acceptCookies').addEventListener('click', () => { setCookie('cookies_accepted','true',365); cookiesAccepted=true; consentBar.classList.remove('show'); let savedTheme=getCookie('theme'); if(savedTheme) setTheme(savedTheme); });
-  document.getElementById('declineCookies').addEventListener('click', () => { setCookie('cookies_accepted','false',1); cookiesAccepted=false; consentBar.classList.remove('show'); document.body.classList.remove('light'); setCookie('theme','',-1); });
-  
-  // Tema
-  const themeToggle = document.getElementById('themeToggle');
-  function setTheme(theme) { if(theme==='light') document.body.classList.add('light'); else document.body.classList.remove('light'); if(cookiesAccepted) setCookie('theme',theme,365); const icon=themeToggle.querySelector('i'); if(theme==='light') icon.classList.replace('fa-moon','fa-sun'); else icon.classList.replace('fa-sun','fa-moon'); }
-  function toggleTheme() { const isLight=document.body.classList.contains('light'); setTheme(isLight?'dark':'light'); }
-  themeToggle.addEventListener('click', () => { if(cookiesAccepted) toggleTheme(); else alert("Lütfen önce çerezleri kabul edin."); });
-  const savedTheme = getCookie('theme'); if(savedTheme && cookiesAccepted) setTheme(savedTheme); else setTheme('dark');
-  
-  // Dil (basit)
-  function applyLanguage(lang){ if(!cookiesAccepted && lang!='tr'){ alert("Çerezleri kabul edin"); return; } document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===lang)); if(cookiesAccepted) setCookie('preferred_lang',lang,365); }
-  document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>applyLanguage(btn.dataset.lang)));
-  applyLanguage('tr');
-  
-  // Modal
-  const modal=document.getElementById('quoteModal'), openBtn=document.getElementById('openQuoteBtn'), closeModal=document.getElementById('closeModalBtn');
-  openBtn.addEventListener('click',()=>modal.classList.add('active')); closeModal.addEventListener('click',()=>modal.classList.remove('active')); modal.addEventListener('click',(e)=>{if(e.target===modal) modal.classList.remove('active');});
-  
-  // Fiyat tahmini
-  const projectType=document.getElementById('projectType'), budgetSelect=document.getElementById('budget'), priceSpan=document.getElementById('priceEstimate');
-  function updateEstimate(){ let type=projectType.value, budget=budgetSelect.value, base=type==='web'?3000:(type==='mobile'?8000:(type==='game'?12000:10000)); if(budget==='low') base*=0.5; else if(budget==='medium') base*=1; else base*=1.8; priceSpan.innerHTML=`💡 Tahmini fiyat: ~${Math.round(base)} ₺`; }
-  projectType.addEventListener('change',updateEstimate); budgetSelect.addEventListener('change',updateEstimate); updateEstimate();
-  
-  // Teklif formu
-  document.getElementById('quoteForm').addEventListener('submit', async(e)=>{ e.preventDefault(); const email=document.getElementById('quoteEmail').value.trim(); if(!email) return alert("E-posta girin"); const body=`Proje: ${projectType.value}\nBütçe: ${budgetSelect.value}\nDetay: ${document.getElementById('quoteDetails').value}\nİletişim: ${email}`; await fetch('https://formsubmit.co/ajax/twoplasmastudiosstudio@gmail.com',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:"Teklif Formu",email,message:body,_subject:"Teklif Talebi"})}); alert("Teklif talebiniz gönderildi!"); modal.classList.remove('active'); });
-  
-  // İletişim formu
-  document.getElementById('contactForm').addEventListener('submit', async(e)=>{ e.preventDefault(); const name=document.getElementById('name').value, email=document.getElementById('email').value, msg=document.getElementById('message').value; if(!name||!email||!msg) return; const status=document.getElementById('formStatus'); status.innerHTML='Gönderiliyor...'; const res=await fetch('https://formsubmit.co/ajax/twoplasmastudiosstudio@gmail.com',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,message:msg,_subject:`İletişim: ${name}`})}); if(res.ok){ status.innerHTML='✅ Mesaj gönderildi!'; document.getElementById('contactForm').reset(); setTimeout(()=>status.innerHTML='',4000); } else status.innerHTML='❌ Hata, lütfen e-posta gönderin.'; });
-  
-  // Haber bülteni
-  document.getElementById('newsletterForm').addEventListener('submit', async(e)=>{ e.preventDefault(); const email=document.getElementById('newsletterEmail').value; const stat=document.getElementById('newsletterStatus'); stat.innerHTML='Abone olunuyor...'; await fetch('https://formsubmit.co/ajax/twoplasmastudiosstudio@gmail.com',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:"Newsletter",email,message:"Haber bültenine abone olmak istiyorum",_subject:"Yeni Abone"})}); stat.innerHTML='✅ Başarıyla abone oldunuz!'; setTimeout(()=>stat.innerHTML='',3000); e.target.reset(); });
-  
-  // GitHub istatistikleri
-  async function fetchGitHubStats(){ try{ const res=await fetch('https://api.github.com/users/TwoPlasmaStudios/repos'); if(!res.ok) throw new Error(); const repos=await res.json(); let stars=0, forks=0; repos.forEach(r=>{ stars+=r.stargazers_count; forks+=r.forks_count; }); document.getElementById('repoCount').innerText=repos.length; document.getElementById('starCount').innerText=stars; document.getElementById('forkCount').innerText=forks; } catch(e){ document.getElementById('repoCount').innerText='?'; document.getElementById('starCount').innerText='?'; document.getElementById('forkCount').innerText='?'; } }
-  fetchGitHubStats();
-  
-  // Animasyonlu sayaçlar ve scroll reveal
-  function animateCounter(el, target){ let current=0, step=target/50; const update=()=>{ current+=step; if(current>=target){ el.innerText=target; return; } el.innerText=Math.floor(current); requestAnimationFrame(update); }; update(); }
-  const observer=new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); if(entry.target.id==='statCustomers') animateCounter(document.getElementById('statCustomers'),128); if(entry.target.id==='statProjects') animateCounter(document.getElementById('statProjects'),94); if(entry.target.id==='statContributions') animateCounter(document.getElementById('statContributions'),256); } }); },{threshold:0.3});
-  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
-  document.querySelectorAll('.stat-card').forEach(el=>observer.observe(el));
-  
-  // Mobil menü
-  document.getElementById('menuIcon').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('active'));
-  document.querySelectorAll('.nav-links a').forEach(link=>link.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('active')));
-  
-  // Smooth scroll için ekstra güvence
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if(targetId === "#") return;
-      const targetElement = document.querySelector(targetId);
-      if(targetElement) {
-        e.preventDefault();
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-  
-  // Çerez politikası modal
-  const policyLink=document.getElementById('cookiePolicyLink'), policyModal=document.createElement('div'); policyModal.id='policyModal'; policyModal.innerHTML=`<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:3000;display:flex;align-items:center;justify-content:center;"><div style="background:var(--bg-body);max-width:500px;padding:32px;border-radius:32px;"><h3>Çerez Politikası</h3><p>Bu site sadece dil ve tema tercihinizi hatırlamak için çerez kullanır. Kişisel veriler paylaşılmaz.</p><button id="closePolicyBtn" class="btn-primary">Kapat</button></div></div>`; document.body.appendChild(policyModal); policyModal.style.display='none'; policyLink.addEventListener('click',()=>policyModal.style.display='flex'); document.getElementById('closePolicyBtn')?.addEventListener('click',()=>policyModal.style.display='none'); policyModal.addEventListener('click',(e)=>{if(e.target===policyModal) policyModal.style.display='none';});
-</script>
+        window.onload = initSite;
+    </script>
 </body>
 </html>
