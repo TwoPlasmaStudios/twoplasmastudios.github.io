@@ -66,6 +66,7 @@
     </style>
 </head>
 <body>
+    <a href="../project-myorktext.html" style="position:fixed;left:10px;top:10px;z-index:9999;padding:7px 11px;border-radius:8px;background:#111827;color:#fff;border:1px solid #64748b;text-decoration:none;font:600 13px Arial,sans-serif;box-shadow:0 2px 10px #0003">← Studio page</a>
     <div class="lang-switcher">
         <select id="language" onchange="changeLanguage(this.value)">
             <option value="tr">Türkçe</option>
@@ -95,9 +96,9 @@
         <button data-lang-key="underline" onclick="formatText('underline')"><u>A</u></button>
         
         <select id="headingStyle" data-lang-key="style" onchange="changeHeadingStyle(this.value)">
-            <option data-lang-key="normal">Normal</option>
-            <option data-lang-key="heading1">Başlık 1</option>
-            <option data-lang-key="heading2">Başlık 2</option>
+            <option value="normal" data-lang-key="normal">Normal</option>
+            <option value="heading1" data-lang-key="heading1">Başlık 1</option>
+            <option value="heading2" data-lang-key="heading2">Başlık 2</option>
         </select>
         
         <button data-lang-key="find" onclick="findText()"></button>
