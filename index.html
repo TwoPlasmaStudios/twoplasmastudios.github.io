@@ -32,39 +32,8 @@ section{padding:42px 0}.heading{display:flex;align-items:end;justify-content:spa
 </div></div></section>
 <section id="about"><div class="wrap"><div class="heading"><h2>What We Build</h2><p>We explore ideas across different formats and technologies, from practical utilities to interactive worlds.</p></div><div class="grid three"><article class="card"><h3>🎮 Games</h3><p>Gameplay systems, simulation concepts, prototypes and interactive experiences.</p></article><article class="card"><h3>💻 Software</h3><p>Useful applications designed to make creative and everyday workflows easier.</p></article><article class="card"><h3>🧪 Experiments</h3><p>Small prototypes and technical explorations that help us test new ideas.</p></article></div></div></section>
 <section id="socials"><div class="wrap"><div class="heading"><h2>Follow the Studio</h2><p>Find our projects, updates and development content on these channels.</p></div><div class="grid three"><a class="social" href="https://github.com/TwoPlasmaStudios" target="_blank" rel="noopener noreferrer"><b>⌘ GitHub</b><span>Code, projects and releases</span></a><a class="social" href="https://www.instagram.com/twoplasmastudiosofc/" target="_blank" rel="noopener noreferrer"><b>◎ Instagram</b><span>Visuals and studio updates</span></a><a class="social" href="https://www.youtube.com/@Twoplasmastudios-c9s" target="_blank" rel="noopener noreferrer"><b>▶ YouTube</b><span>Videos and development</span></a></div></div></section>
-<section id="contact"><div class="wrap"><div class="contact"><div class="heading"><h2>Let's connect.</h2><p>Send us a message directly from the website.</p></div><p class="muted">For questions, collaboration, project ideas or business inquiries, use the form below. Your message will be forwarded to the Two Plasma Studios email inbox through FormSubmit.</p><form class="contact-form" action="https://formsubmit.co/twoplasmastudios@proton.me" method="POST"><input type="hidden" name="_subject" value="Two Plasma Studios — New Website Message"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="https://twoplasmastudios.github.io/?submitted=1#contact"><input type="hidden" name="_url" value="https://twoplasmastudios.github.io/#contact"><input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off"><div class="form-row"><div class="field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required></div></div><div class="field"><label for="subject">Subject</label><input id="subject" name="subject" type="text" placeholder="What is this about?" required></div><div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Write your message..." required></textarea></div><div class="buttons"><button class="btn primary submit-btn" type="submit">Send message →</button></div></form><div class="contact-email">twoplasmastudios@proton.me <button id="copyEmail" class="btn" type="button" style="padding:6px 10px;margin:0;cursor:pointer">Copy</button><span id="copyStatus" class="contact-status" aria-live="polite">Copied!</span></div></div></div></section>
+<section id="contact"><div class="wrap"><div class="contact"><div class="heading"><h2>Let's connect.</h2><p>Have a question, collaboration idea or project inquiry?</p></div><p class="muted">Use our dedicated contact form. It is designed to keep messages organized and give you a clear confirmation after submission.</p><div class="buttons"><a class="btn primary" href="./contact.html">Open contact form →</a></div><div class="contact-email">twoplasmastudios@proton.me</div></div></div></section>
 </main>
 <footer><div class="wrap foot"><span>© <span id="year"></span> Two Plasma Studios</span><span>Build. Experiment. Create.</span></div></footer>
-<script>
-document.getElementById("year").textContent=new Date().getFullYear();
-
-const params=new URLSearchParams(window.location.search);
-if(params.get("submitted")==="1"){
-  const box=document.querySelector(".contact");
-  if(box){
-    const notice=document.createElement("div");
-    notice.style.cssText="margin-bottom:16px;padding:12px 14px;border:1px solid #46d39a55;background:#46d39a12;color:#9af0cb;border-radius:12px;font-weight:700";
-    notice.textContent="Message sent successfully. Thanks for contacting Two Plasma Studios!";
-    box.prepend(notice);
-  }
-}
-
-const copyButton=document.getElementById("copyEmail");
-const copyStatus=document.getElementById("copyStatus");
-copyButton?.addEventListener("click",async()=>{
-  const email="twoplasmastudios@proton.me";
-  try{
-    await navigator.clipboard.writeText(email);
-    copyStatus.classList.add("show");
-    setTimeout(()=>copyStatus.classList.remove("show"),1800);
-  }catch{
-    copyStatus.textContent="Copy failed";
-    copyStatus.classList.add("show");
-    setTimeout(()=>{
-      copyStatus.textContent="Copied!";
-      copyStatus.classList.remove("show")
-    },1800);
-  }
-});
-</script>
+<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
 </body></html>
